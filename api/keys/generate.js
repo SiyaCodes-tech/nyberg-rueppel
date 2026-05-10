@@ -1,4 +1,4 @@
-import db from '../_db.js';
+import db from '../_firebase.js';
 import * as bigintCryptoUtils from 'bigint-crypto-utils';
 
 export default async function handler(req, res) {
@@ -50,21 +50,27 @@ export default async function handler(req, res) {
     const y = bigintCryptoUtils.modPow(g, x, p);
     steps.push({ label: 'Compute public key y = g^x mod p', value: y.toString() });
 
-    // Save to DB
-    const result = await db.query(
-      `INSERT INTO key_pairs (name, p, q, g, x, y) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, created_at`,
-      [name, p.toString(), q.toString(), g.toString(), x.toString(), y.toString()]
-    );
-
-    const keyPair = {
-      id: result.rows[0].id,
+    // Save to Firestore
+    const createdAt = new Date().toISOString();
+    const docRef = await db.collection('keyPairs').add({
       name,
       p: p.toString(),
       q: q.toString(),
       g: g.toString(),
       x: x.toString(),
       y: y.toString(),
-      created_at: result.rows[0].created_at
+      createdAt
+    });
+
+    const keyPair = {
+      id: docRef.id,
+      name,
+      p: p.toString(),
+      q: q.toString(),
+      g: g.toString(),
+      x: x.toString(),
+      y: y.toString(),
+      created_at: createdAt
     };
 
     return res.status(200).json({ keyPair, steps });

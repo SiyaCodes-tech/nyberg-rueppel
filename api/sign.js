@@ -1,4 +1,4 @@
-import db from './_db.js';
+import db from './_firebase.js';
 import * as bigintCryptoUtils from 'bigint-crypto-utils';
 
 function positiveMod(n, m) {
@@ -11,11 +11,11 @@ export default async function handler(req, res) {
     const { keyPairId, message } = req.body;
     if (!keyPairId || !message) return res.status(400).json({ error: 'Missing keyPairId or message' });
 
-    // Fetch key pair
-    const keyQuery = await db.query(`SELECT p, q, g, x FROM key_pairs WHERE id = $1`, [keyPairId]);
-    if (keyQuery.rows.length === 0) return res.status(404).json({ error: 'Key pair not found' });
+    // Fetch key pair from Firestore
+    const keyDoc = await db.collection('keyPairs').doc(keyPairId).get();
+    if (!keyDoc.exists) return res.status(404).json({ error: 'Key pair not found' });
     
-    const { p: pStr, q: qStr, g: gStr, x: xStr } = keyQuery.rows[0];
+    const { p: pStr, q: qStr, g: gStr, x: xStr } = keyDoc.data();
     const p = BigInt(pStr);
     const q = BigInt(qStr);
     const g = BigInt(gStr);
@@ -48,17 +48,21 @@ export default async function handler(req, res) {
     const s = positiveMod(k - (r % q) * x, q);
     steps.push({ label: 'Compute s = (k - r · x) mod q', value: s.toString() });
 
-    // Save to DB
-    const result = await db.query(
-      `INSERT INTO signatures (key_pair_id, message, r, s) VALUES ($1, $2, $3, $4) RETURNING id, signed_at`,
-      [keyPairId, message, r.toString(), s.toString()]
-    );
-
-    const signature = {
-      id: result.rows[0].id,
+    // Save to Firestore
+    const signedAt = new Date().toISOString();
+    const docRef = await db.collection('signatures').add({
+      keyPairId,
+      message,
       r: r.toString(),
       s: s.toString(),
-      signed_at: result.rows[0].signed_at
+      signedAt
+    });
+
+    const signature = {
+      id: docRef.id,
+      r: r.toString(),
+      s: s.toString(),
+      signed_at: signedAt
     };
 
     return res.status(200).json({ signature, steps });
