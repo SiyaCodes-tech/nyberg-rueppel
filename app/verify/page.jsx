@@ -19,6 +19,19 @@ export default function VerifyMessage() {
     fetchKeys();
   }, []);
 
+  const fetchLatestSignature = async () => {
+    try {
+      const res = await fetch("/api/signatures/latest");
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.r) setR(data.r);
+      if (data.s) setS(data.s);
+      if (data.keyPairId) setSelectedKey(data.keyPairId);
+    } catch (err) {
+      console.log("No recent signature found");
+    }
+  };
+
   const fetchKeys = async () => {
     try {
       const res = await fetch("/api/keys");
@@ -26,6 +39,7 @@ export default function VerifyMessage() {
       const data = await res.json();
       setKeys(data);
       if (data.length > 0) setSelectedKey(data[0].id);
+      await fetchLatestSignature();
     } catch (err) {
       setError("Could not load public keys.");
     } finally {
@@ -75,7 +89,7 @@ export default function VerifyMessage() {
 
       <InfoBanner
         type="info"
-        message="Input the signature components (r, s) and select the sender's public key. The math will verify the integrity and extract the hidden text."
+        message="Auto-filled with your most recent signature. You can paste different values if needed."
       />
 
       {error && <InfoBanner type="error" message={error} />}
@@ -173,7 +187,7 @@ export default function VerifyMessage() {
                   {result.isValid ? (
                     <CheckCircle className="text-green-500" size={24} />
                   ) : (
-                    <XCircle className="text-red-500" size={24} /> // Note: using AlertTriangle/XCircle logic
+                    <XCircle className="text-red-500" size={24} />
                   )}
                   <h4
                     className={`text-lg font-bold ${result.isValid ? "text-green-500" : "text-red-500"}`}
