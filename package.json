@@ -1,0 +1,17 @@
+{
+  "name": "nyberg-rueppel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bigint-crypto-utils": "^3.3.0",
+    "dotenv": "^17.4.2",
+    "pg": "^8.20.0"
+  }
+}

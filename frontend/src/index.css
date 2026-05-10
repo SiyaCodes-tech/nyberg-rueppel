@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-textMain font-sans antialiased;
+  }
+}
+
+@layer components {
+  .cyber-panel {
+    @apply bg-surface border border-border rounded-lg shadow-lg;
+  }
+  
+  .cyber-input {
+    @apply w-full bg-[#1a1a1a] border border-border rounded-md px-4 py-2 focus:outline-none focus:border-primary text-textMain transition-colors;
+  }
+  
+  .cyber-button {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+  }
+  
+  .cyber-button-primary {
+    @apply cyber-button bg-primary/10 text-primary border border-primary hover:bg-primary/20 focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .cyber-button-secondary {
+    @apply cyber-button bg-surface border border-border text-textMain hover:bg-[#1f1f1f] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .step-box {
+    @apply p-4 rounded-md bg-[#161616] border border-[#2a2a2a] overflow-x-auto;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
