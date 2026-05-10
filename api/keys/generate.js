@@ -1,4 +1,4 @@
-import db from '../../_db.js';
+import db from '../_db.js';
 import * as bigintCryptoUtils from 'bigint-crypto-utils';
 
 export default async function handler(req, res) {

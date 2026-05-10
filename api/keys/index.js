@@ -1,4 +1,4 @@
-import db from '../../_db.js';
+import db from '../_db.js';
 
 export default async function handler(req, res) {
   try {
