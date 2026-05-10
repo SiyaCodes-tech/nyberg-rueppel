@@ -58,9 +58,9 @@ const VerifyMessage = () => {
   return (
     <div className="animate-in fade-in duration-500">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-100 flex items-center gap-3">
-          <CheckCircle className="text-green-400" size={32} />
-          Verify & Recover
+        <h1 className="text-4xl md:text-5xl font-extrabold flex items-center gap-4 mb-2">
+          <CheckCircle className="text-green-400 drop-shadow-lg" size={40} />
+          <span className="text-gradient">Verify & Recover</span>
         </h1>
         <p className="text-gray-400 mt-2">
           Verify a Nyberg-Rueppel signature and recover the original message.

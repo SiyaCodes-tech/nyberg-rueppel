@@ -57,9 +57,9 @@ const SignMessage = () => {
   return (
     <div className="animate-in fade-in duration-500">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-100 flex items-center gap-3">
-          <FileSignature className="text-green-400" size={32} />
-          Sign Message
+        <h1 className="text-4xl md:text-5xl font-extrabold flex items-center gap-4 mb-2">
+          <FileSignature className="text-green-400 drop-shadow-lg" size={40} />
+          <span className="text-gradient">Sign Message</span>
         </h1>
         <p className="text-gray-400 mt-2">
           Sign a message using the Nyberg-Rueppel scheme with message recovery.

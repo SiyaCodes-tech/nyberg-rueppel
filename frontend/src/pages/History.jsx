@@ -33,9 +33,9 @@ const History = () => {
     <div className="animate-in fade-in duration-500">
       <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-100 flex items-center gap-3">
-            <Clock className="text-green-400" size={32} />
-            History Log
+          <h1 className="text-4xl md:text-5xl font-extrabold flex items-center gap-4 mb-2">
+            <Clock className="text-green-400 drop-shadow-lg" size={40} />
+            <span className="text-gradient">History Log</span>
           </h1>
           <p className="text-gray-400 mt-2">
             Audit trail of all signing and verification operations.
