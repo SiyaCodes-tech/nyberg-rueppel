@@ -1,10 +1,10 @@
-const db = require('../../_db');
-const bigintCryptoUtils = require('bigint-crypto-utils');
+import db from '../../_db.js';
+import * as bigintCryptoUtils from 'bigint-crypto-utils';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-
   try {
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
     const { name = 'Unnamed Key' } = req.body || {};
 
     const steps = [];

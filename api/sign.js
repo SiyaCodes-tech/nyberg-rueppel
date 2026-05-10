@@ -1,14 +1,13 @@
-const db = require('../_db');
-const bigintCryptoUtils = require('bigint-crypto-utils');
+import db from '../_db.js';
+import * as bigintCryptoUtils from 'bigint-crypto-utils';
 
 function positiveMod(n, m) {
   return ((n % m) + m) % m;
 }
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-
   try {
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
     const { keyPairId, message } = req.body;
     if (!keyPairId || !message) return res.status(400).json({ error: 'Missing keyPairId or message' });
 

@@ -1,9 +1,8 @@
-const db = require('../_db');
+import db from '../_db.js';
 
 export default async function handler(req, res) {
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-
   try {
+    if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
     // We'll return history from signatures and verifications, interleaved by date
     const signaturesQuery = `
       SELECT 

@@ -1,8 +1,8 @@
-const db = require('../../_db');
+import db from '../../_db.js';
 
 export default async function handler(req, res) {
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
   try {
+    if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
     const result = await db.query(
       `SELECT id, name, p, q, g, y, created_at FROM key_pairs ORDER BY id DESC`
     );
