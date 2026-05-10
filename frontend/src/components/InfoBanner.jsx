@@ -5,8 +5,8 @@ const InfoBanner = ({ type = 'info', message }) => {
   const types = {
     info: { icon: <Info size={20} />, classes: 'bg-blue-900/20 text-blue-400 border-blue-900/50' },
     warning: { icon: <AlertTriangle size={20} />, classes: 'bg-yellow-900/20 text-yellow-500 border-yellow-900/50' },
-    success: { icon: <CheckCircle size={20} />, classes: 'bg-success/10 text-success border-success/30' },
-    error: { icon: <XCircle size={20} />, classes: 'bg-error/10 text-error border-error/30' },
+    success: { icon: <CheckCircle size={20} />, classes: 'bg-green-500/10 text-green-500 border-green-500/30' },
+    error: { icon: <XCircle size={20} />, classes: 'bg-red-500/10 text-red-500 border-red-500/30' },
   };
 
   const { icon, classes } = types[type] || types.info;

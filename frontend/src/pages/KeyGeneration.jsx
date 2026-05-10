@@ -37,11 +37,11 @@ const KeyGeneration = () => {
   return (
     <div className="animate-in fade-in duration-500">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-textMain flex items-center gap-3">
-          <Key className="text-primary" size={32} />
+        <h1 className="text-3xl font-bold text-gray-100 flex items-center gap-3">
+          <Key className="text-green-400" size={32} />
           Key Generation
         </h1>
-        <p className="text-textMuted mt-2">
+        <p className="text-gray-400 mt-2">
           Generate Nyberg-Rueppel cryptographic parameters and key pair.
         </p>
       </div>
@@ -54,7 +54,7 @@ const KeyGeneration = () => {
       <div className="cyber-panel p-6 mb-8">
         <form onSubmit={handleGenerate} className="flex flex-col sm:flex-row gap-4 items-end">
           <div className="flex-1 w-full">
-            <label className="block text-sm font-medium text-textMuted mb-2">
+            <label className="block text-sm font-medium text-gray-400 mb-2">
               Key Pair Name (Optional)
             </label>
             <input
@@ -72,7 +72,7 @@ const KeyGeneration = () => {
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <svg className="animate-spin h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                <svg className="animate-spin h-4 w-4 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 Generating...
               </span>
             ) : (
@@ -80,13 +80,13 @@ const KeyGeneration = () => {
             )}
           </button>
         </form>
-        {error && <div className="mt-4 text-error text-sm">{error}</div>}
+        {error && <div className="mt-4 text-red-500 text-sm">{error}</div>}
       </div>
 
       {result && (
         <div className="animate-in slide-in-from-bottom-4 duration-500">
           <div className="cyber-panel p-6">
-            <h2 className="text-xl font-bold mb-6 text-primary border-b border-border pb-2">
+            <h2 className="text-xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">
               Generated Key Pair: {result.keyPair.name}
             </h2>
             

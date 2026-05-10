@@ -57,11 +57,11 @@ const SignMessage = () => {
   return (
     <div className="animate-in fade-in duration-500">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-textMain flex items-center gap-3">
-          <FileSignature className="text-primary" size={32} />
+        <h1 className="text-3xl font-bold text-gray-100 flex items-center gap-3">
+          <FileSignature className="text-green-400" size={32} />
           Sign Message
         </h1>
-        <p className="text-textMuted mt-2">
+        <p className="text-gray-400 mt-2">
           Sign a message using the Nyberg-Rueppel scheme with message recovery.
         </p>
       </div>
@@ -70,7 +70,7 @@ const SignMessage = () => {
         <div className="cyber-panel p-6 h-fit">
           <form onSubmit={handleSign} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-textMuted mb-2">
+              <label className="block text-sm font-medium text-gray-400 mb-2">
                 Select Key Pair
               </label>
               <select
@@ -87,12 +87,12 @@ const SignMessage = () => {
                 ))}
               </select>
               {keys.length === 0 && (
-                <p className="text-xs text-error mt-2">No keys found. Please generate one first.</p>
+                <p className="text-xs text-red-500 mt-2">No keys found. Please generate one first.</p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-textMuted mb-2">
+              <label className="block text-sm font-medium text-gray-400 mb-2">
                 Message to Sign (Max 128 characters)
               </label>
               <textarea
@@ -104,7 +104,7 @@ const SignMessage = () => {
                 placeholder="Enter your secret message..."
                 required
               />
-              <div className="text-right text-xs text-textMuted mt-1">
+              <div className="text-right text-xs text-gray-400 mt-1">
                 {message.length} / 128
               </div>
             </div>
@@ -116,7 +116,7 @@ const SignMessage = () => {
             >
               {loading ? 'Signing...' : 'Sign Message'}
             </button>
-            {error && <div className="text-error text-sm text-center">{error}</div>}
+            {error && <div className="text-red-500 text-sm text-center">{error}</div>}
           </form>
         </div>
 
@@ -124,7 +124,7 @@ const SignMessage = () => {
           {result && (
             <div className="animate-in slide-in-from-right-8 duration-500 space-y-6">
               <div className="cyber-panel p-6 border-primary/50">
-                <h3 className="text-lg font-bold text-primary mb-4">Generated Signature</h3>
+                <h3 className="text-lg font-bold text-green-400 mb-4">Generated Signature</h3>
                 <CopyableField label="Signature r" value={result.signature.r} multiline />
                 <CopyableField label="Signature s" value={result.signature.s} />
               </div>

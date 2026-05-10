@@ -58,11 +58,11 @@ const VerifyMessage = () => {
   return (
     <div className="animate-in fade-in duration-500">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-textMain flex items-center gap-3">
-          <CheckCircle className="text-primary" size={32} />
+        <h1 className="text-3xl font-bold text-gray-100 flex items-center gap-3">
+          <CheckCircle className="text-green-400" size={32} />
           Verify & Recover
         </h1>
-        <p className="text-textMuted mt-2">
+        <p className="text-gray-400 mt-2">
           Verify a Nyberg-Rueppel signature and recover the original message.
         </p>
       </div>
@@ -71,7 +71,7 @@ const VerifyMessage = () => {
         <div className="cyber-panel p-6 h-fit">
           <form onSubmit={handleVerify} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-textMuted mb-2">
+              <label className="block text-sm font-medium text-gray-400 mb-2">
                 Public Key to Verify Against
               </label>
               <select
@@ -90,7 +90,7 @@ const VerifyMessage = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-textMuted mb-2">
+              <label className="block text-sm font-medium text-gray-400 mb-2">
                 Signature r
               </label>
               <textarea
@@ -104,7 +104,7 @@ const VerifyMessage = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-textMuted mb-2">
+              <label className="block text-sm font-medium text-gray-400 mb-2">
                 Signature s
               </label>
               <textarea
@@ -124,7 +124,7 @@ const VerifyMessage = () => {
             >
               {loading ? 'Verifying...' : 'Verify & Recover'}
             </button>
-            {error && <div className="text-error text-sm text-center">{error}</div>}
+            {error && <div className="text-red-500 text-sm text-center">{error}</div>}
           </form>
         </div>
 
@@ -144,8 +144,8 @@ const VerifyMessage = () => {
               )}
 
               <div className="cyber-panel p-6">
-                <h3 className="text-lg font-medium text-textMuted mb-4">Recovered Message</h3>
-                <div className={`p-4 rounded-md text-lg font-mono break-all ${result.isValid ? 'bg-success/10 text-success border border-success/30' : 'bg-error/10 text-error border border-error/30'}`}>
+                <h3 className="text-lg font-medium text-gray-400 mb-4">Recovered Message</h3>
+                <div className={`p-4 rounded-md text-lg font-mono break-all ${result.isValid ? 'bg-green-500/10 text-green-500 border border-green-500/30' : 'bg-red-500/10 text-red-500 border border-red-500/30'}`}>
                   {result.recovered_message || '[Unreadable / Empty]'}
                 </div>
               </div>

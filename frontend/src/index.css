@@ -4,48 +4,37 @@
 
 @layer base {
   body {
-    @apply bg-background text-textMain font-sans antialiased;
+    @apply bg-gray-950 text-gray-100 font-sans antialiased;
   }
 }
 
 @layer components {
   .cyber-panel {
-    @apply bg-surface border border-border rounded-lg shadow-lg;
+    @apply bg-gray-900 border border-gray-700 rounded-lg shadow-lg;
   }
-  
+
   .cyber-input {
-    @apply w-full bg-[#1a1a1a] border border-border rounded-md px-4 py-2 focus:outline-none focus:border-primary text-textMain transition-colors;
+    @apply w-full bg-gray-900 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-green-400 text-gray-100 transition-colors;
   }
-  
+
   .cyber-button {
     @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
   }
-  
+
   .cyber-button-primary {
-    @apply cyber-button bg-primary/10 text-primary border border-primary hover:bg-primary/20 focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply cyber-button bg-green-400/10 text-green-400 border border-green-400 hover:bg-green-400/20 disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  
+
   .cyber-button-secondary {
-    @apply cyber-button bg-surface border border-border text-textMain hover:bg-[#1f1f1f] disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply cyber-button bg-gray-900 border border-gray-700 text-gray-100 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .step-box {
-    @apply p-4 rounded-md bg-[#161616] border border-[#2a2a2a] overflow-x-auto;
+    @apply p-4 rounded-md bg-gray-950 border border-gray-800 overflow-x-auto;
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #3a3a3a;
-}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
